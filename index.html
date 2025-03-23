@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Calculator</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+     <style>
+      body{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: skyblue;
+
+}
+span{
+    color: red;
+
+}
+.container{
+    position: absolute;  
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50% );
+    padding: 15px;
+    background: black;   
+    border-radius: 5px;
+    box-shadow: rgb(38, 57 ,77) 0px 20px 30px -10px; 
+}
+input{
+    outline: none;
+    border: none;
+    padding: 5px;
+}
+button{
+    color: white;
+    /* background: black; */
+    background-color: black;
+    padding: 10px; 
+    border: 2px solid white;
+
+}
+
+     </style>
+  </head> 
+  <body>
+    <div class="container">
+     <form>
+        <p>
+            Height in Centimeters:
+            <input type="text" id="height" placeholder="enter your height" /><br /><span id="height_error"></span>
+          </p>
+    
+          <p>
+            Weight in Kg:
+            <input type="text" id="weight" placeholder="enter your weight" /><br />
+            <span id="weight_error"> </span>
+          </p>
+          <button id="btn">Calculate</button>
+    
+          <p id="output"></p>
+          <p class="bmi">
+            Underweight: BMI less than 18.5
+          </p>
+          <p>
+            Noraml weight: BMI 18.5 to 24.9
+          </p>
+          <p>
+            Overweight: BMI 25 to 29.9
+          </p>
+          <p>
+         Obesity: BMI 30 and above  
+          </p>
+     </form>
+    </div>
+  </body>
+  <!-- <script src="tut.js"></script> -->
+   <script>
+    const form= document.querySelector('form')  
+form.addEventListener('submit', function(e){
+    e.preventDefault()
+
+const height=  parseInt(document.querySelector('#height').value)
+const weight=  parseInt(document.querySelector('#weight').value)
+const calculate= document.querySelector('#btn')
+// const output = document.querySelector('#output');
+    
+    if(height===" "|| height<0 || isNaN(height)){
+          document.querySelector('#height_error').innerHTML ='Please give a valid height'
+    }
+    if(weight===" "|| weight<0 || isNaN(weight)){
+        document.querySelector('#weight_error').innerHTML ='Please give a valid weight'
+  } else{
+   const bmi=  (weight/((height*height)/10000)).toFixed(2)
+   output.innerHTML=   `<span> Your BMI is: ${bmi}</span>`
+  }
+} 
+
+
+)
+
+
+   </script>
+</html>
